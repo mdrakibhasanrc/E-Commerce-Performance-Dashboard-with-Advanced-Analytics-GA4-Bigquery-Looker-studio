@@ -2,22 +2,25 @@
 An e-commerce company, TrendStyle, specializes in selling fashion apparel and accessories online. Over the past year, they have experienced fluctuating sales, with a noticeable decline in conversion rates. To address these challenges, the company decided to leverage advanced analytics tools to gain deeper insights into customer behavior and optimize their marketing strategies.
 
 ### Objective:
-The primary objective was to create a comprehensive dashboard using Looker Studio that integrates data from Google Analytics 4 (GA4), BigQuery, and DBT. This would provide real-time insights into customer interactions, sales performance, and marketing effectiveness.
+The primary objective was to create a comprehensive dashboard using Looker Studio that integrates data from Google Analytics 4 (GA4), BigQuery. This would provide real-time insights into customer interactions, sales performance, and marketing effectiveness.
 
 ### Tech Stack: Ga4 | Bigquery, SQL | Looker Studio
 
 ### Implementation Steps:
 
 ✅ Integrate the GA4 and Other data source with BigQuery:
+
  ** Integrated GA4 with BigQuery for enhanced data storage and analysis capabilities.
+ 
  ** Ensured that raw GA4 data was continuously streamed to BigQuery for real-time reporting.
  
 ✅ Connect and integrate BigQuery on Looker Studio & Setup Looker Data Studio dashboard creation and development:
-Report elements:
 
-### KPI Overview: 
+### Report elements:
 
-#### ALL KPI
+#### KPI Overview: 
+
+ ** ALL KPI
 
 #### Traffic Overview:
 
