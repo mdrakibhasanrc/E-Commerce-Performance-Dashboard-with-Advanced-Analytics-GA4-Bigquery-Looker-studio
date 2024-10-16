@@ -1,0 +1,79 @@
+ -- Create Funnel
+
+with dataset as (
+ SELECT 
+ user_pseudo_id,
+ event_name,
+ parse_date('%Y%m%d',event_date) as event_date,
+ timestamp_micros(event_timestamp) as event_timestamp
+ FROM `bigquery-public-data.ga4_obfuscated_sample_ecommerce.events_*`
+ where event_name in ('view_item','add_to_cart','begin_checkout','purchase')
+),
+
+view_item as (
+ select
+ user_pseudo_id,
+ event_date,
+ event_timestamp
+ from dataset
+ where event_name='view_item'
+),
+
+add_to_cart as (
+ select
+ user_pseudo_id,
+ event_date,
+ event_timestamp
+ from dataset
+ where event_name='add_to_cart'
+),
+
+begin_checkout as (
+ select
+ user_pseudo_id,
+ event_date,
+ event_timestamp
+ from dataset
+ where event_name='begin_checkout'
+),
+
+purchase as (
+ select
+ user_pseudo_id,
+ event_date,
+ event_timestamp
+ from dataset
+ where event_name='purchase'
+),
+
+funnel as (
+ select
+ vi.event_date,
+ count(distinct vi.user_pseudo_id) as view_item,
+ count(distinct atc.user_pseudo_id) as add_to_cart,
+ count(distinct bc.user_pseudo_id) as begin_checkout,
+ count(distinct p.user_pseudo_id) as purchase
+ from view_item vi
+ left join add_to_cart atc on vi.user_pseudo_id=atc.user_pseudo_id
+ and vi.event_date=atc.event_date
+ and vi.event_timestamp<atc.event_timestamp
+ left join begin_checkout bc on atc.user_pseudo_id=bc.user_pseudo_id
+ and atc.event_date=bc.event_date
+ and atc.event_timestamp<bc.event_timestamp
+ left join purchase p on bc.user_pseudo_id=p.user_pseudo_id
+ and bc.event_date=p.event_date
+ and bc.event_timestamp<p.event_timestamp
+ group by vi.event_date
+)
+
+ select
+ event_date,
+ view_item,
+ add_to_cart,
+ begin_checkout,
+ purchase,
+ round(coalesce(add_to_cart/nullif(view_item,0),0),2) as add_to_cart_rate,
+ round(coalesce(begin_checkout/nullif(view_item,0),0),2) as begin_checkout_rate,
+ round(coalesce(purchase/nullif(view_item,0),0),2) as purchase_rate
+ from funnel
+ order by view_item desc
