@@ -9,8 +9,11 @@ The primary objective was to create a comprehensive dashboard using Looker Studi
 ### Implementation Steps:
 
 ✅ Integrated GA4 with BigQuery for enhanced data storage and analysis capabilities.
+
 ✅ Ensured that raw GA4 data was continuously streamed to BigQuery for real-time reporting.
+
 ✅ After Data Integration with Bigquery, I have been Custom sql query for to get deeper insights.
+
 ✅ Then Connect and integrate BigQuery on Looker Studio & Setup Looker Data Studio dashboard creation and development:
 
 ### SQL Query:
@@ -99,34 +102,42 @@ funnel as (
 ### Development Dashboard: 
 
 #### ALL KPI Overview: 
- 
-![KPI ](https://github.com/user-attachments/assets/393a34c7-50fc-453a-b595-c1ed74135792)
-![KPI Overview](https://github.com/user-attachments/assets/42916bde-f573-4a91-84cd-7f6d0d31d40f)
+ ![KPI_Overview](https://github.com/user-attachments/assets/f77439cb-5f1a-436f-8625-b264171a42f5)
 
-#### Ecommerce Overview:
+#### Website Overview Page: 
+![Website Overview](https://github.com/user-attachments/assets/007e2c56-ba0f-4534-9c5a-6cafc5138dcd)
 
-![Ecommerce](https://github.com/user-attachments/assets/ec5459bc-9601-42b7-a76c-d00f3aa2f27e)
-
-
-#### Event Overview
-
-![Event](https://github.com/user-attachments/assets/bb121a99-5e8d-438c-905d-0df5df7c965f)
+#### Ecommerce Report Page:
 
 
-#### Top Performing Pages
-
-![Landing_page](https://github.com/user-attachments/assets/78a2eb08-5e12-4b72-baad-8b6d7659c8b8)
+![Ecommerce Overview](https://github.com/user-attachments/assets/d9980279-624a-42f0-9bf6-40246ba85d4b)
 
 
-#### Traffic Acquisition
+#### Traffic Source Page:
 
-![Traffic](https://github.com/user-attachments/assets/dd8bd49b-bab9-43e0-b4ca-183b7a5ded37)
 
-#### User Demographics
+![Traffic Source](https://github.com/user-attachments/assets/1c6d7459-7c91-4e53-8fa0-c4748393c7b1)
 
-![Demographics](https://github.com/user-attachments/assets/ddf89244-9a11-4d3f-b15b-8378c21a87de)
 
-### Results
+#### Landing Page Performance:
+
+
+![Landing Page](https://github.com/user-attachments/assets/07772c5d-85f4-487a-bc76-b10fb46cf8d1)
+
+
+#### Event Page:
+
+![Landing_Page](https://github.com/user-attachments/assets/ef76a44a-e9a8-42b2-bc7f-4979b7564186)
+
+#### User Demographics Page:
+
+![Demographic](https://github.com/user-attachments/assets/e0fbf750-1e2e-4395-bef0-8faa90e35793)
+
+#### Device Performance age:
+
+![Device Report](https://github.com/user-attachments/assets/9f94cc4d-f064-4800-89a3-5bd9f8fe3b3b)
+
+### Insight From This Dashboard:
 ** Increased Conversion Rate: After implementing data-driven changes, TrendStyle saw a 25% increase in conversion rates within three months.
 
 ** Higher Average Order Value: By promoting bundles and upsells based on user behavior, the average order value increased by 15%.
