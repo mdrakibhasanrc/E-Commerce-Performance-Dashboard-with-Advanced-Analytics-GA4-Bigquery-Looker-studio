@@ -1,4 +1,4 @@
-### Introduction:
+### Problem Statment:
 An e-commerce company, TrendStyle, specializes in selling fashion apparel and accessories online. Over the past year, they have experienced fluctuating sales, with a noticeable decline in conversion rates. To address these challenges, the company decided to leverage advanced analytics tools to gain deeper insights into customer behavior and optimize their marketing strategies.
 
 ### Objective:
@@ -8,78 +8,123 @@ The primary objective was to create a comprehensive dashboard using Looker Studi
 
 ### Implementation Steps:
 
-✅ Integrate the GA4 and Other data source with BigQuery:
+✅ Integrated GA4 with BigQuery for enhanced data storage and analysis capabilities.
+✅ Ensured that raw GA4 data was continuously streamed to BigQuery for real-time reporting.
+✅ After Data Integration with Bigquery, I have been Custom sql query for to get deeper insights.
+✅ Then Connect and integrate BigQuery on Looker Studio & Setup Looker Data Studio dashboard creation and development:
 
- ** Integrated GA4 with BigQuery for enhanced data storage and analysis capabilities.
+### SQL Query:
+✅ Funnel Analysis to get Deeper Insights
+```sql
+with dataset as (
+ SELECT 
+ user_pseudo_id,
+ event_name,
+ parse_date('%Y%m%d',event_date) as event_date,
+ timestamp_micros(event_timestamp) as event_timestamp
+ FROM `bigquery-public-data.ga4_obfuscated_sample_ecommerce.events_*`
+ where event_name in ('view_item','add_to_cart','begin_checkout','purchase')
+),
+
+view_item as (
+ select
+ user_pseudo_id,
+ event_date,
+ event_timestamp
+ from dataset
+ where event_name='view_item'
+),
+
+add_to_cart as (
+ select
+ user_pseudo_id,
+ event_date,
+ event_timestamp
+ from dataset
+ where event_name='add_to_cart'
+),
+
+begin_checkout as (
+ select
+ user_pseudo_id,
+ event_date,
+ event_timestamp
+ from dataset
+ where event_name='begin_checkout'
+),
+
+purchase as (
+ select
+ user_pseudo_id,
+ event_date,
+ event_timestamp
+ from dataset
+ where event_name='purchase'
+),
+
+funnel as (
+ select
+ vi.event_date,
+ count(distinct vi.user_pseudo_id) as view_item,
+ count(distinct atc.user_pseudo_id) as add_to_cart,
+ count(distinct bc.user_pseudo_id) as begin_checkout,
+ count(distinct p.user_pseudo_id) as purchase
+ from view_item vi
+ left join add_to_cart atc on vi.user_pseudo_id=atc.user_pseudo_id
+ and vi.event_date=atc.event_date
+ and vi.event_timestamp<atc.event_timestamp
+ left join begin_checkout bc on atc.user_pseudo_id=bc.user_pseudo_id
+ and atc.event_date=bc.event_date
+ and atc.event_timestamp<bc.event_timestamp
+ left join purchase p on bc.user_pseudo_id=p.user_pseudo_id
+ and bc.event_date=p.event_date
+ and bc.event_timestamp<p.event_timestamp
+ group by vi.event_date
+)
+
+ select
+ event_date,
+ view_item,
+ add_to_cart,
+ begin_checkout,
+ purchase,
+ round(coalesce(add_to_cart/nullif(view_item,0),0),2) as add_to_cart_rate,
+ round(coalesce(begin_checkout/nullif(view_item,0),0),2) as begin_checkout_rate,
+ round(coalesce(purchase/nullif(view_item,0),0),2) as purchase_rate
+ from funnel
+ order by view_item desc
+```
+
+
+### Development Dashboard: 
+
+#### ALL KPI Overview: 
  
- ** Ensured that raw GA4 data was continuously streamed to BigQuery for real-time reporting.
- 
-✅ Connect and integrate BigQuery on Looker Studio & Setup Looker Data Studio dashboard creation and development:
+![KPI ](https://github.com/user-attachments/assets/393a34c7-50fc-453a-b595-c1ed74135792)
+![KPI Overview](https://github.com/user-attachments/assets/42916bde-f573-4a91-84cd-7f6d0d31d40f)
 
-### Report elements:
+#### Ecommerce Overview:
 
-#### KPI Overview: 
+![Ecommerce](https://github.com/user-attachments/assets/ec5459bc-9601-42b7-a76c-d00f3aa2f27e)
 
- ** ALL KPI
 
-#### Traffic Overview:
+#### Event Overview
 
-** Total Visitors (Sessions): The number of visitors or sessions on the website within the month.
+![Event](https://github.com/user-attachments/assets/bb121a99-5e8d-438c-905d-0df5df7c965f)
 
-** Unique Visitors: Number of individual users visiting the site.
-
-** Pageviews: Total number of pages viewed.
-
-** Top Traffic Sources: Breakdown of where traffic is coming from (e.g., Organic Search, Direct, Referral, Social, Paid Ads).
-
-** Traffic by Device: Percentage split between desktop, mobile, and tablet visitors.
-
-#### Engagement Metrics
-
-** Bounce Rate: Percentage of visitors who leave the site after viewing only one page.
-
-** Average Session Duration: How long users spend on the site on average.
-
-** Pages per Session: The average number of pages viewed during a session.
-
-** New vs. Returning Visitors: Percentage breakdown of new visitors compared to returning visitors.
 
 #### Top Performing Pages
 
-** A list of pages with the most visits, showing which content or pages are attracting the most traffic.
+![Landing_page](https://github.com/user-attachments/assets/78a2eb08-5e12-4b72-baad-8b6d7659c8b8)
 
-** Pageviews, Bounce Rate, and Average Time on Page for each of the top pages.
 
 #### Traffic Acquisition
 
-** Organic Search: How much traffic is coming from search engines, what are the keywords used
-
-** Referral Traffic: Which websites are sending visitors
-
-** Social Media Traffic: Traffic coming from social platforms.
-
-** Paid Traffic: Overview of paid ad campaigns and their performance.
-
-#### Conversions and Goals
-
-** Total Conversions: Number of goal completions, such as form submissions, sales, or other actions.
-
-** Conversion Rate: Percentage of visitors completing a goal out of the total traffic.
-
-** Top Conversion Pages: Pages that lead to the highest number of conversions.
-
-### Funnel Analysis:
-
-If applicable, the drop-off rates at each stage of the conversion process.
+![Traffic](https://github.com/user-attachments/assets/dd8bd49b-bab9-43e0-b4ca-183b7a5ded37)
 
 #### User Demographics
 
-** Geography: Where users are located (countries, cities).
-** Language: Languages spoken by users.
-
-#### Usage: Insights into device and browser breakdown.
-
-#### ✅ Additional Adjustments, Troubleshooting or Fixes.
+![Demographics](https://github.com/user-attachments/assets/ddf89244-9a11-4d3f-b15b-8378c21a87de)
 
 ### Results
 ** Increased Conversion Rate: After implementing data-driven changes, TrendStyle saw a 25% increase in conversion rates within three months.
