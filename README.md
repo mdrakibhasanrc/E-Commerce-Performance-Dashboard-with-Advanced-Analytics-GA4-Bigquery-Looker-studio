@@ -1,22 +1,29 @@
-### Problem Statment:
-An e-commerce company, TrendStyle, specializes in selling fashion apparel and accessories online. Over the past year, they have experienced fluctuating sales, with a noticeable decline in conversion rates. To address these challenges, the company decided to leverage advanced analytics tools to gain deeper insights into customer behavior and optimize their marketing strategies.
+## Project: End-to-End eCommerce Data Pipeline for Actionable Insights
 
 ### Objective:
-The primary objective was to create a comprehensive dashboard using Looker Studio that integrates data from Google Analytics 4 (GA4), BigQuery. This would provide real-time insights into customer interactions, sales performance, and marketing effectiveness.
+This project showcases my ability to design and implement a data pipeline tailored for an eCommerce business. Leveraging Google Analytics 4 (GA4), BigQuery, and Looker Studio, the pipeline collects, stores, processes, and visualizes data to offer actionable insights. The goal is to empower business stakeholders to make informed decisions that drive sales and optimize the customer journey.
 
-### Tech Stack: Ga4 | Bigquery, SQL | Looker Studio
+### Tools and Technologies:
+   GA4: Event tracking and data collection.
+   
+  BigQuery: Data warehousing, storage, and querying.
+  
+  dbt: Data modeling and transformation.
+  
+  Looker Studio: Interactive data visualization.
 
 ### Implementation Steps:
 
-✅ Integrated GA4 with BigQuery for enhanced data storage and analysis capabilities.
+✅ Data Collection: Configured Google Analytics 4 (GA4) to track key user interactions on the eCommerce site, including pageviews, product clicks, cart additions, and purchases. Then Ga4 integrated with Bigquery.
 
-✅ Ensured that raw GA4 data was continuously streamed to BigQuery for real-time reporting.
+✅ Data Storage and Management: Established a BigQuery data warehouse to store large volumes of eCommerce data efficiently. Ensured that raw GA4 data was continuously streamed to BigQuery for real-time reporting.
 
-✅ After Data Integration with Bigquery, I have been Custom sql query for to get deeper insights.
+✅ Data Transformation and Modeling: Leveraged dbt (data build tool) to transform raw data into business-ready tables, creating standardized metrics and KPIs such as conversion rate, average order value, customer lifetime value, and product performance metrics.
 
-✅ Then Connect and integrate BigQuery on Looker Studio & Setup Looker Data Studio dashboard creation and development:
+✅ Data Visualization and Reporting: Built a Looker Studio dashboard tailored for eCommerce metrics, including an overview of sales performance, conversion rates, traffic sources, and high-value customer segments. Designed interactive reports with breakdowns by device, traffic source, and customer type to support detailed performance analysis.
 
-### SQL Query:
+### Custom SQL Query With Bigquery to get Better Actionable Insights:
+
 ✅ New Vs Returning Users by Total users 
 ```sql
 SELECT 
@@ -199,6 +206,10 @@ funnel as (
 #### Device Performance age:
 
 ![Device Report](https://github.com/user-attachments/assets/9f94cc4d-f064-4800-89a3-5bd9f8fe3b3b)
+
+
+### Outcome: 
+The final product is a powerful analytics solution that delivers valuable insights into customer behavior, traffic performance, and product sales. This pipeline enables eCommerce businesses to optimize their marketing strategies, enhance user engagement, and drive sustainable growth through data-informed decisions.
 
 ### Insight From This Dashboard:
 ** Increased Conversion Rate: After implementing data-driven changes, TrendStyle saw a 25% increase in conversion rates within three months.
