@@ -4,23 +4,29 @@
 This project showcases my ability to design and implement a data pipeline tailored for an eCommerce business. Leveraging Google Analytics 4 (GA4), BigQuery, and Looker Studio, the pipeline collects, stores, processes, and visualizes data to offer actionable insights. The goal is to empower business stakeholders to make informed decisions that drive sales and optimize the customer journey.
 
 ### Tools and Technologies:
-   GA4: Event tracking and data collection.
+         I) GA4: Event tracking and data collection.
    
-  BigQuery: Data warehousing, storage, and querying.
+         II) BigQuery: Data warehousing, storage, and querying.
   
-  dbt: Data modeling and transformation.
+         III) DBT: Data modeling and transformation.
   
-  Looker Studio: Interactive data visualization.
+         IV) Looker Studio: Interactive data visualization.
 
 ### Implementation Steps:
 
-✅ Data Collection: Configured Google Analytics 4 (GA4) to track key user interactions on the eCommerce site, including pageviews, product clicks, cart additions, and purchases. Then Ga4 integrated with Bigquery.
+         ✅ Step 1: Data Collection:
+            Configured Google Analytics 4 (GA4) to track key user interactions on the eCommerce site, including pageviews, product clicks, cart additions, and purchases. Then Ga4 
+            integrated with Bigquery.
 
-✅ Data Storage and Management: Established a BigQuery data warehouse to store large volumes of eCommerce data efficiently. Ensured that raw GA4 data was continuously streamed to BigQuery for real-time reporting.
+         ✅ Step 2: Data Storage and Management: Established a BigQuery data warehouse to store large volumes of eCommerce data efficiently. Ensured that raw GA4 data was continuously 
+             streamed to BigQuery for real-time reporting.
 
-✅ Data Transformation and Modeling: Leveraged dbt (data build tool) to transform raw data into business-ready tables, creating standardized metrics and KPIs such as conversion rate, average order value, customer lifetime value, and product performance metrics.
+         ✅ Step 3: Data Transformation and Modeling: Leveraged dbt (data build tool) to transform raw data into business-ready tables, creating standardized metrics and KPIs such as 
+            conversion rate, average order value, customer lifetime value, and product performance metrics.
 
-✅ Data Visualization and Reporting: Built a Looker Studio dashboard tailored for eCommerce metrics, including an overview of sales performance, conversion rates, traffic sources, and high-value customer segments. Designed interactive reports with breakdowns by device, traffic source, and customer type to support detailed performance analysis.
+         ✅ Step 4: Data Visualization and Reporting: Built a Looker Studio dashboard tailored for eCommerce metrics, including an overview of sales performance, conversion rates, 
+            traffic  sources, and high-value customer segments. Designed interactive reports with breakdowns by device, traffic source, and customer type to support detailed performance 
+            analysis.
 
 ### Custom SQL Query With Bigquery to get Better Actionable Insights:
 
