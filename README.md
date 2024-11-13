@@ -18,15 +18,17 @@ This project showcases my ability to design and implement a data pipeline tailor
             Configured Google Analytics 4 (GA4) to track key user interactions on the eCommerce site, including pageviews, product clicks, cart additions, and purchases. Then Ga4 
             integrated with Bigquery.
 
-         ✅ Step 2: Data Storage and Management: Established a BigQuery data warehouse to store large volumes of eCommerce data efficiently. Ensured that raw GA4 data was continuously 
-             streamed to BigQuery for real-time reporting.
+         ✅ Step 2: Data Storage and Management:
+             Established a BigQuery data warehouse to store large volumes of eCommerce data efficiently. Ensured that raw GA4 data was continuously  streamed to BigQuery for real-time 
+             reporting.
 
-         ✅ Step 3: Data Transformation and Modeling: Leveraged dbt (data build tool) to transform raw data into business-ready tables, creating standardized metrics and KPIs such as 
-            conversion rate, average order value, customer lifetime value, and product performance metrics.
+         ✅ Step 3: Data Transformation and Modeling: 
+             Leveraged dbt (data build tool) to transform raw data into business-ready tables, creating standardized metrics and KPIs such as conversion rate, average order value, 
+             customer lifetime value, and product performance metrics.
 
-         ✅ Step 4: Data Visualization and Reporting: Built a Looker Studio dashboard tailored for eCommerce metrics, including an overview of sales performance, conversion rates, 
-            traffic  sources, and high-value customer segments. Designed interactive reports with breakdowns by device, traffic source, and customer type to support detailed performance 
-            analysis.
+         ✅ Step 4: Data Visualization and Reporting: 
+             Built a Looker Studio dashboard tailored for eCommerce metrics, including an overview of sales performance, conversion rates, traffic  sources, and high-value customer 
+             segments. Designed interactive reports with breakdowns by device, traffic source, and customer type to support detailed performance analysis.
 
 ### Custom SQL Query With Bigquery to get Better Actionable Insights:
 
